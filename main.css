@@ -1,0 +1,25 @@
+body { 
+    font-family: Arial, sans-serif;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;   /* vertical center */
+    align-items: center;       /* horizontal center */
+    text-align: center; 
+ }
+
+    input { width: 300px; padding: 10px; font-size: 18px; }
+    p { margin-top: 20px; font-size: 20px; font-weight: bold; color: forestgreen;}
+     #copyBtn {
+        padding: 10px 15px; 
+        font-size: 16px; 
+        cursor: pointer; 
+        margin-left: 10px;
+    }
+    #helpline {
+        position: fixed;
+        bottom: 10px; 
+        font-size: 14px; 
+        color: rgb(238, 31, 31);
+    }
