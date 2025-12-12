@@ -26,9 +26,14 @@ function numberToWords(num) {
 
     if (!num) return "";
 
-    let n = parseInt(num);
+     // Split rupees and cents
+    let parts = num.toString().split(".");
+    let rupees = parseInt(parts[0]);
+    let cents = parts[1] ? parts[1].substring(0, 2).padEnd(2, "0") : null;
 
-    if (n === 0) return "zero rupess only";
+    let n = rupees;
+
+    if (n === 0 && !cents) return "zero rupees only.";
 
     let result = "";
 
@@ -48,12 +53,27 @@ function numberToWords(num) {
     if (million) result += convertBelowThousand(million) + " million ";
     if (thousand) result += convertBelowThousand(thousand) + " thousand ";
     if (hundred) result += ones[hundred] + " hundred ";
+
+    // Convert last two digits
     if (n > 0) {
-        if (result !== "" && hundred > 0) result += "and ";
         result += numToWords(n) + " ";
     }
 
-    return result.trim() + " rupees only.";
+    // Handle cents
+    if (cents && parseInt(cents) > 0) {
+        let centsWords = numToWords(parseInt(cents));
+        result += "and " + centsWords + " cents only.";
+    } else {
+        result = result.trim() + " rupees only.";
+    }
+
+    return result;
+    // if (n > 0) {
+    //     if (result !== "" && hundred > 0) result += "and ";
+    //     result += numToWords(n) + " ";
+    // }
+
+    //return result.trim() + " rupees only.";
 }
 
 // Helper to convert numbers below 1000
