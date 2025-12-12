@@ -62,9 +62,9 @@ function numberToWords(num) {
     // Handle cents
     if (cents && parseInt(cents) > 0) {
         let centsWords = numToWords(parseInt(cents));
-        result += "and " + centsWords + " cents only.";
+        result += "rupees and " + centsWords + " cents";
     } else {
-        result = result.trim() + " rupees only.";
+        result = result.trim() + " rupees";
     }
 
     return result;
