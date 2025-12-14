@@ -11,7 +11,7 @@ body {
     text-align: center;
 }
 
-input {
+input[type="number"] {
     width: 300px;
     padding: 10px;
     font-size: 18px;
@@ -29,6 +29,8 @@ p {
     font-size: 16px;
     cursor: pointer;
     margin-left: 10px;
+    color: rgb(20, 22, 19);
+    background-color: rgb(211, 211, 211);
 }
 
 #helpline {
@@ -42,8 +44,8 @@ p {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    gap: 2px;
-    margin-top: 5px;
+    gap: 6px;
+    margin-top: 15px;
 }
 
 #capitalTxt {
@@ -53,6 +55,5 @@ p {
 
 #capsToggle {
     transform: scale(1.5);
-    margin-right: 0px;
-    padding-right: 0px;
+    margin-right: 5px;
 }
