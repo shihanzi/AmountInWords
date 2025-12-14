@@ -1,6 +1,10 @@
+let originalOutput = "";
+
 function convert() {
     let num = document.getElementById("amount").value;
     document.getElementById("output").innerText = numberToWords(num);
+    originalOutput = numberToWords(num);
+    applyCaps();
 }
 
 // Word mappings
@@ -33,7 +37,7 @@ function numberToWords(num) {
 
     let n = rupees;
 
-    if (n === 0 && !cents) return "zero rupees only.";
+    if (n === 0 && !cents) return " zero.";
 
     let result = "";
 
@@ -62,12 +66,12 @@ function numberToWords(num) {
     // Handle cents
     if (cents && parseInt(cents) > 0) {
         let centsWords = numToWords(parseInt(cents));
-        result += "rupees and " + centsWords + " cents";
+        result += " and " + centsWords + " cents";
     } else {
-        result = result.trim() + " rupees";
+        result = result.trim() + " ";
     }
 
-    return result;
+    return "Rupees "+ result;
     // if (n > 0) {
     //     if (result !== "" && hundred > 0) result += "and ";
     //     result += numToWords(n) + " ";
@@ -75,6 +79,20 @@ function numberToWords(num) {
 
     //return result.trim() + " rupees only.";
 }
+function applyCaps() {
+    const outputEl = document.getElementById("output");
+    const isCaps = document.getElementById("capsToggle").checked;
+
+    if (!originalOutput) {
+        outputEl.innerText = "";
+        return;
+    }
+
+    outputEl.innerText = isCaps
+        ? originalOutput.toUpperCase()
+        : originalOutput;
+}
+
 
 // Helper to convert numbers below 1000
 function convertBelowThousand(n) {
@@ -113,5 +131,9 @@ document.addEventListener("DOMContentLoaded", function () {
             convert();
             copyText();
         }
+    });
+
+    amt.addEventListener("focus", function () {
+        amt.select();
     });
 });
