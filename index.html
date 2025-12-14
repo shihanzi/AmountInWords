@@ -11,10 +11,10 @@
 <body>
     <h2>Sri Lankan Amount Converter (Digits → Words)</h2>
 <input type="number" id="amount" placeholder="Enter amount e.g. 123456.78" oninput="convert()">
-<label style="margin-top:10px; display:block;">
+<div id="capitalLbl">
     <input type="checkbox" id="capsToggle" onchange="applyCaps()">
-    Show output in CAPITAL LETTERS
-</label>
+   <span id="capitalTxt">Show output in CAPITAL LETTERS</span> 
+</div>
 <p id="output"></p>
 <button id="copyBtn" onclick="copyText()">Copy</button>
 <p id="helpline">EasyPack Solutions Helpline - 0777217731</p>
